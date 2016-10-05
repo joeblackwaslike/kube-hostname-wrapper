@@ -12,3 +12,4 @@ Kubernetes does however assign pod hostnames that are resolvable from others pod
 * -s: outputs short hostname. example: 192-168-0-3
 * -i: outputs ip address. example: 192.168.0.3
 * default: outputs fqdn hostname unless KUBERNETES_USE_SHORTNAME=true
+
