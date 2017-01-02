@@ -6,8 +6,8 @@ BIN_FILES = $(shell ls bin)
 
 
 build:
-	@docker run --rm -it -v $$GOPATH:/go -w /go/src/github.com/$(USER)/$(PROJECT) golang:cross sh -c 'export GOARCH=amd64; for GOOS in darwin linux; do echo "Building $$GOOS-$$GOARCH"; export GOOS=$$GOOS; go build -v -o bin/$(PROJECT)-$$GOOS; done'
-
+	# @docker run --rm -it -v $$GOPATH:/go -w /go/src/github.com/$(USER)/$(PROJECT) golang:cross sh -c 'export GOARCH=amd64; for GOOS in darwin linux; do echo "Building $$GOOS-$$GOARCH"; export GOOS=$$GOOS; go build -ldflags="-s -w" -v -o bin/$(PROJECT)-$$GOOS; done'
+	@docker run --rm -it -v $$GOPATH:/go -w /go/src/github.com/$(USER)/$(PROJECT) golang:1.7 sh -c 'export GOARCH=amd64 GOOS=linux; go version; echo "Building $$GOOS-$$GOARCH"; go build -ldflags="-s -w" -v -o bin/$(PROJECT)'
 clean:
 	@rm -rf bin/*
 

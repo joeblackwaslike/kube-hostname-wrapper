@@ -61,7 +61,7 @@ func main() {
     suffix := "pod.cluster.local"
     
     ns := readNsFile(ns_path)
-    use_shortname := os.Getenv("KUBERNETES_USE_SHORTNAME")
+    use_shortname := os.Getenv("KUBE_HOSTNAME_SHORT")
     
     os.Args = append(os.Args, "*")
     fmtArg := os.Args[1]
@@ -85,5 +85,4 @@ func main() {
             fmt.Println(formatLong(ip, ns, suffix))
         }
     }
-
 }
